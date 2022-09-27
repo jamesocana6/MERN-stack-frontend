@@ -7,8 +7,8 @@ import Show from "../pages/Show.js";
 function Main(props) {
     
     const [ people, setPeople ] = useState(null);
-    const URL = "http://localhost:4000/people";
-
+    //const URL = "http://localhost:4000/people";
+    const URL = "https://agile-escarpment-89896.herokuapp.com/people/"
     const getPeople = async () => {
         const repsonse = await fetch(URL);
         const data = await repsonse.json();
