@@ -26,6 +26,25 @@ function Main(props) {
         //update list of people    
         getPeople();
     }
+
+    const updatePeople = async (person, id) => {
+        await fetch(URL + id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "Application/json",
+            },
+            body: JSON.stringify(person)
+        });
+        getPeople();
+    }
+
+    const deletePeople = async (id) => {
+        await fetch(URL + id, {
+            method: "DELETE",
+        });
+        getPeople();
+    }
+
     //works
     //useEffect(() => () => getPeople(), []);
     useEffect(() => {getPeople()}, []);
@@ -43,6 +62,9 @@ function Main(props) {
                     path="/people/:id"
                     render={(rp) => (
                         <Show
+                        people={people}
+                        updatePeople={updatePeople}
+                        deletePeople={deletePeople}
                         {...rp}
                         />
                     )}
